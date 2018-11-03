@@ -32,8 +32,8 @@
   border: 1px solid #BCE0FD;
   color: #2699FB;
   padding: 10px;
-  font-size: 18px;    
-  width: 100%;  
+  font-size: 18px;
+  width: 100%;
   &::before {
     position: absolute;
     content: " ";
@@ -50,9 +50,8 @@
     color: #2699FB;
     font-size: 18px;
     padding-top: 2px;
-  }
-  &:focus {
-    border: none;
-    box-shadow: none;
+    &:focus {
+      outline: none;
+    }
   }
 }

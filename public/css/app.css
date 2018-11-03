@@ -10528,9 +10528,7 @@ a.text-dark:focus {
   padding-top: 2px;
 }
 
-.search:focus {
-  border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.search input:focus {
+  outline: none;
 }
 
