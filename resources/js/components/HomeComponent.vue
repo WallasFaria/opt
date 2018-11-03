@@ -5,17 +5,19 @@
         </div>
 
         <div class="content">
-            <div class="search">
-                <input type="text">
-            </div>
+            <search-component />
         </div>
     </div>
 </template>
 
 <script>
+    import SearchComponent from "./SearchComponent.vue";
     export default {
         mounted() {
             console.log('Component mounted.')
+        },
+        components: {
+            'search-component': SearchComponent
         }
     }
 </script>

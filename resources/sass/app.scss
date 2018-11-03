@@ -18,7 +18,6 @@
 
 .logo {
   flex: 1;
-  background: blue;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -26,13 +25,30 @@
 
 .content {
   flex: 1;
-  background: red;
 }
 
 .search {
-  padding: 5px;
-  border: 1px solid rgb(162, 162, 243)
+  background: #ffffff;
+  border: 1px solid #BCE0FD;
+  color: #2699FB;
+  padding: 10px;
+  font-size: 18px;    
+  width: 100%;  
+  &::before {
+    position: absolute;
+    content: " ";
+    background-image: url('../svg/search.svg');
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+  }
   input {
-    border: none;
+    border: 0px;
+    width: 100%;
+    background: transparent;
+    padding-left: 45px;
+    color: #2699FB;
+    font-size: 18px;
+    padding-top: 2px;
   }
 }

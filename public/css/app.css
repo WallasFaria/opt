@@ -10483,7 +10483,6 @@ a.text-dark:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background: blue;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -10499,12 +10498,33 @@ a.text-dark:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background: red;
 }
 
 .search {
-  padding: 5px;
-  border: 1px solid #a2a2f3 input;
-  border-border: none;
+  background: #ffffff;
+  border: 1px solid #BCE0FD;
+  color: #2699FB;
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.search::before {
+  position: absolute;
+  content: " ";
+  background-image: url(/images/search.svg?78bf96387277609875a18fcdc33ee8d1);
+  background-size: cover;
+  width: 32px;
+  height: 32px;
+}
+
+.search input {
+  border: 0px;
+  width: 100%;
+  background: transparent;
+  padding-left: 45px;
+  color: #2699FB;
+  font-size: 18px;
+  padding-top: 2px;
 }
 
