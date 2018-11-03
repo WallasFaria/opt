@@ -2,7 +2,7 @@
     <div class="card">
         <div class="place-container">
             <div class="place-data">
-                <div class="place-name"></div>
+                <div class="place-name">{{ place }}</div>
                 <div class="place-addr"></div>
                 <div class="place-hours"></div>
                 <div class="place-contact"></div>
@@ -19,8 +19,17 @@
                 <span class="place-timeline--text"></span>
             </div>
             <div class="place-timeline--chart">
-                
+
             </div>
         </div>
     </div>
 </template>
+
+
+<script>
+    export default {
+        props: ['place'],
+        methods: {
+        }
+    }
+</script>
