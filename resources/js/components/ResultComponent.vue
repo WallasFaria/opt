@@ -39,7 +39,14 @@
 
         data() {
             return {
-                places: [],
+                places: [
+                    {
+                        name: "Banco do Brasil",
+                        final_address: "R. Eng. Franco Amaral, 13 - Parque Flamboyant, Campos dos Goytacazes - RJ, 28015-270",
+                        open_now: false,
+                        contact: "(22) 2724-5111"
+                    }
+                ],
                 sortOption: ['distance', 'popularity'],
                 query:  {
                     name: this.$route.query.q,

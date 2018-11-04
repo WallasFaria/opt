@@ -50717,7 +50717,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            places: [],
+            places: [{
+                name: "Banco do Brasil",
+                final_address: "R. Eng. Franco Amaral, 13 - Parque Flamboyant, Campos dos Goytacazes - RJ, 28015-270",
+                open_now: false,
+                contact: "(22) 2724-5111"
+            }],
             sortOption: ['distance', 'popularity'],
             query: {
                 name: this.$route.query.q,
@@ -50812,6 +50817,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['place'],
@@ -50826,25 +50847,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "place-card" }, [
     _c("div", { staticClass: "place-container" }, [
-      _c("div", { staticClass: "place-data" }, [
-        _c("div", { staticClass: "place-name" }, [_vm._v(_vm._s(_vm.place))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "place-addr" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "place-hours" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "place-contact" })
-      ]),
+      _c("div", {
+        staticClass: "place-image",
+        staticStyle: { "background-image": "url('images/placeholder.jpg')" }
+      }),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "place-text" }, [
+        _c("div", { staticClass: "place-data" }, [
+          _c("div", { staticClass: "place-mid" }, [
+            _c("div", { staticClass: "place-left" }, [
+              _c("div", { staticClass: "place-name" }, [
+                _vm._v(_vm._s(_vm.place.name))
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
+        ]),
+        _vm._v(" "),
+        _vm._m(3)
+      ])
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(4)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "place-info" }, [
+      _c("div", { staticClass: "place-addr" }, [
+        _c("strong", [_vm._v("Endereço:")]),
+        _vm._v(
+          " R. Manoel Teodoro, 28 - Centro, Campos dos Goytacazes - RJ, 28030-490"
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "place-open" }, [
+        _c("strong", [_vm._v("Situação:")]),
+        _vm._v(" Aberto agora")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "place-contact" }, [
+        _c("strong", [_vm._v("Telefone:")]),
+        _vm._v(" (22) 2737-4300")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "place-right" }, [
+      _c("div", { staticClass: "place-time" }, [_vm._v("Seg 09h")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "place-popularity place-popularity-low" }, [
+        _c("div", { staticClass: "place-popularity-text" }, [
+          _vm._v("Movimento"),
+          _c("br"),
+          _vm._v("Baixo")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "place-bottom" }, [
+      _c("div", { staticClass: "place-details" }, [_vm._v("DETALHES")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
