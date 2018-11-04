@@ -67,6 +67,10 @@
                     })
             },
             setQueryToSearch(query) {
+                this.$router.push({
+                    path: '/search',
+                    query: { q: query, radius: 2000 }
+                })
                 this.query.name = query
                 this.search()
             }

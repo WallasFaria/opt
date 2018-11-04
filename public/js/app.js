@@ -70949,8 +70949,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
-        toHome: function toHome() {
-            this.$router.push('/');
+        goBack: function goBack() {
+            window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
         }
     }
 });
@@ -70971,7 +70971,7 @@ var render = function() {
             staticClass: "btn-back",
             on: {
               click: function($event) {
-                _vm.toHome()
+                _vm.goBack()
               }
             }
           },
@@ -71623,6 +71623,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             });
         },
         setQueryToSearch: function setQueryToSearch(query) {
+            this.$router.push({
+                path: '/search',
+                query: { q: query, radius: 2000 }
+            });
             this.query.name = query;
             this.search();
         }
