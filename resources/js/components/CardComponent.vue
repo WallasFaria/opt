@@ -20,7 +20,7 @@
                         </div>
                         <div class="place-right" v-if="showPopularity">
                             <div class="place-time">{{ dateFormated }}</div>
-                            <div class="place-popularity place-popularity-low">
+                            <div class="place-popularity" :class="popularityClassName">
                                 <div class="place-popularity-text">Movimento<br>{{ rangeOfPopularity }}</div>
                             </div>
                         </div>
@@ -60,7 +60,8 @@
                 isOpen: null,
                 showPopularity: false,
                 popularityNow: 0,
-                rangeOfPopularity: ''
+                rangeOfPopularity: '',
+                popularityClassName: ''
             }
         },
 
@@ -71,16 +72,19 @@
                         start: 1,
                         end: 35,
                         label: 'Baixo',
+                        className: 'place-popularity-low'
                     },
                     {
                         start: 36,
                         end: 65,
                         label: 'Médio',
+                        className: 'place-popularity-mid'
                     },
                     {
                         start: 66,
                         end: 100,
                         label: 'Alta',
+                        className: 'place-popularity-high'
                     },
                 ]
 
@@ -88,6 +92,7 @@
                     if (this.popularityNow >= rangesOfPopularity[i].start &&
                         this.popularityNow <= rangesOfPopularity[i].end) {
                         this.rangeOfPopularity = rangesOfPopularity[i].label
+                        this.popularityClassName = rangesOfPopularity[i].className
                     }
                 }
             }

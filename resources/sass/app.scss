@@ -33,12 +33,13 @@
   padding: 0px;
   margin: 0px;
   border: 0px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.5);
 }
 
 .place-container {
   position: relative;
   border: 0px;
-  width: $place-width;
   height: $place-height;
   background-color: #000000;
   background-size: cover;
@@ -59,6 +60,7 @@
   z-index: 10;
   color: #ffffff;
   padding: 13px 17px 12px 17px;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0) 75%);
 }
 
 .place-mid {
@@ -110,8 +112,22 @@
 
 .place-popularity-low {
   background-image: url('../images/low.png');
-  color: rgb(97, 255, 108);
-} 
+  color: $green;
+}
+
+.place-popularity-mid {
+  background-image: url('../images/mid.png');
+  color: $yellow;
+}
+
+.place-popularity-high {
+  background-image: url('../images/high.png');
+  color: $red;
+}
+
+.place-data {
+  height: 165px;
+}
 
 .place-popularity-text {
   font-size: 18px;

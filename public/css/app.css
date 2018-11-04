@@ -10567,12 +10567,14 @@ a.text-dark:focus {
   padding: 0px;
   margin: 0px;
   border: 0px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .place-container {
   position: relative;
   border: 0px;
-  width: 342px;
   height: 200px;
   background-color: #000000;
   background-size: cover;
@@ -10593,6 +10595,8 @@ a.text-dark:focus {
   z-index: 10;
   color: #ffffff;
   padding: 13px 17px 12px 17px;
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.6)), color-stop(75%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 75%);
 }
 
 .place-mid {
@@ -10656,6 +10660,20 @@ a.text-dark:focus {
 .place-popularity-low {
   background-image: url(/images/low.png?8227d0b04987383c3a78373ff62d9c5b);
   color: #61ff6c;
+}
+
+.place-popularity-mid {
+  background-image: url(/images/mid.png?948164dce908268eb7df56084fb29afc);
+  color: #ffca61;
+}
+
+.place-popularity-high {
+  background-image: url(/images/high.png?1857f4a363ba420f56a2cac529e20a35);
+  color: #ff6161;
+}
+
+.place-data {
+  height: 165px;
 }
 
 .place-popularity-text {

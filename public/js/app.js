@@ -50902,7 +50902,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             isOpen: null,
             showPopularity: false,
             popularityNow: 0,
-            rangeOfPopularity: ''
+            rangeOfPopularity: '',
+            popularityClassName: ''
         };
     },
 
@@ -50912,20 +50913,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var rangesOfPopularity = [{
                 start: 1,
                 end: 35,
-                label: 'Baixo'
+                label: 'Baixo',
+                className: 'place-popularity-low'
             }, {
                 start: 36,
                 end: 65,
-                label: 'Médio'
+                label: 'Médio',
+                className: 'place-popularity-mid'
             }, {
                 start: 66,
                 end: 100,
-                label: 'Alta'
+                label: 'Alta',
+                className: 'place-popularity-high'
             }];
 
             for (var i = 0; i < rangesOfPopularity.length; i++) {
                 if (this.popularityNow >= rangesOfPopularity[i].start && this.popularityNow <= rangesOfPopularity[i].end) {
                     this.rangeOfPopularity = rangesOfPopularity[i].label;
+                    this.popularityClassName = rangesOfPopularity[i].className;
                 }
             }
         }
@@ -51013,7 +51018,10 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "place-popularity place-popularity-low" },
+                    {
+                      staticClass: "place-popularity",
+                      class: _vm.popularityClassName
+                    },
                     [
                       _c("div", { staticClass: "place-popularity-text" }, [
                         _vm._v("Movimento"),
