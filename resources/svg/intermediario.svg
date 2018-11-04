@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffca61;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #ffca61;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_17_1" data-name="Symbol 17 – 1" transform="translate(-265 -123)">
+    <path id="Union_2" data-name="Union 2" class="cls-1" d="M0,18.767V16.421c0-2.581,4.222-4.692,9.383-4.692s9.383,2.111,9.383,4.692v2.346ZM4.691,4.692A4.692,4.692,0,1,1,9.383,9.383,4.692,4.692,0,0,1,4.691,4.692Z" transform="translate(282.329 140.677)"/>
+    <path id="Union_4" data-name="Union 4" class="cls-1" d="M0,15.19v-1.9c0-2.089,3.418-3.8,7.595-3.8s7.595,1.709,7.595,3.8v1.9ZM3.8,3.8a3.8,3.8,0,1,1,3.8,3.8A3.8,3.8,0,0,1,3.8,3.8Z" transform="translate(293.789 141.2)"/>
+    <path id="Union_3" data-name="Union 3" class="cls-1" d="M0,15.19v-1.9c0-2.089,3.418-3.8,7.595-3.8s7.595,1.709,7.595,3.8v1.9ZM3.8,3.8a3.8,3.8,0,1,1,3.8,3.8A3.8,3.8,0,0,1,3.8,3.8Z" transform="translate(274.446 141.2)"/>
+    <g id="Ellipse_5" data-name="Ellipse 5" class="cls-2" transform="translate(265 123)">
+      <circle class="cls-3" cx="27" cy="27" r="27"/>
+      <circle class="cls-4" cx="27" cy="27" r="25"/>
+    </g>
+  </g>
+</svg>
