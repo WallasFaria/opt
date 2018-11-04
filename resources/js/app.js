@@ -5,6 +5,9 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+import VueGeolocation from 'vue-browser-geolocation';
+Vue.use(VueGeolocation);
+
 import HomeComponent from './components/HomeComponent'
 import ResultComponent from './components/ResultComponent'
 

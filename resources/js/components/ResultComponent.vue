@@ -4,7 +4,8 @@
             <search-component
                 v-if="showSearch"
                 :value="query.name"
-                :className="'top'" />
+                :className="'top'"
+                @onKeyPress="setQueryToSearch" />
         </transition>
 
         <div class="main">
@@ -29,24 +30,21 @@
             'card-component': CardComponent,
         },
 
-        mounted() {
+        async mounted() {
             this.showSearch = true;
-            // axios.get('/api/places/', this.query)
-            //     .then(result => {
-            //         console.log(result)
-            //     })
+
+            await this.$getLocation({ enableHighAccuracy: true })
+                .then(coords => {
+                    this.query.lat = coords.lat
+                    this.query.lon = coords.lng
+                })
+
+            this.search()
         },
 
         data() {
             return {
-                places: [
-                    {
-                        name: "Banco do Brasil",
-                        final_address: "R. Eng. Franco Amaral, 13 - Parque Flamboyant, Campos dos Goytacazes - RJ, 28015-270",
-                        open_now: false,
-                        contact: "(22) 2724-5111"
-                    }
-                ],
+                places: [],
                 sortOption: ['distance', 'popularity'],
                 query:  {
                     name: this.$route.query.q,
@@ -59,6 +57,20 @@
             }
         },
 
+        methods: {
+            search() {
+                this.places = []
+
+                axios.get('/api/places/', { params: this.query })
+                    .then(res => {
+                        this.places = res.data
+                    })
+            },
+            setQueryToSearch(query) {
+                this.query.name = query
+                this.search()
+            }
+        }
     }
 </script>
 
