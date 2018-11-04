@@ -63,10 +63,6 @@
   background-image: linear-gradient(to left, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0) 75%);
 }
 
-.place-mid {
-  display: flex;
-}
-
 .place-left {
     flex: 1 65%;
 }
@@ -102,6 +98,7 @@
 .place-mid {
   display: flex;
   justify-content: space-between;
+  height: 134px;
 }
 
 .place-popularity {
@@ -123,10 +120,6 @@
 .place-popularity-high {
   background-image: url('../images/high.png');
   color: $red;
-}
-
-.place-data {
-  height: 165px;
 }
 
 .place-popularity-text {
@@ -174,7 +167,8 @@
     text-align: center;
     color: rgb(72, 72, 72);
     font-weight: bold;
-    padding-top: 25px;
+    padding-top: 15px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 8%);
   }
   &-navigation {
     display: flex;
@@ -215,6 +209,11 @@
   background: rgb(240, 240, 240);
 }
 
+.place-timeline {
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
 .place-details {
   border: 1px solid #ffffff;
   font-weight: 300;
@@ -222,4 +221,5 @@
   letter-spacing: 1px;
   text-align: center;
   height: 26px;
+  padding: 4px;
 }

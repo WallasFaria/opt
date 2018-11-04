@@ -26,16 +26,21 @@
                         </div>
                     </div>
                     <div class="place-bottom">
-                        <div class="place-details">DETALHES</div>
+                        <div class="place-details" @click="showStats()">DETALHES</div>
                     </div>
                 </div>
                 <div class="best-hour">
-                    
+
                 </div>
             </div>
         </div>
         <div class="place-timeline">
-            <stats-component />
+            <transition name="slide-up">
+                <stats-component
+                    v-if="visibledStats"
+                    :statsData="statsData"
+                    :statsLabels="statsLabels" />
+            </transition>
         </div>
     </div>
 </template>
@@ -56,7 +61,11 @@
                 showPopularity: false,
                 popularityNow: 0,
                 rangeOfPopularity: '',
-                popularityClassName: ''
+                popularityClassName: '',
+                visibledStats: false,
+
+                statsData: [],
+                statsLabels: [],
             }
         },
 
@@ -90,6 +99,9 @@
                         this.popularityClassName = rangesOfPopularity[i].className
                     }
                 }
+            },
+            showStats() {
+                this.visibledStats = !this.visibledStats
             }
         },
 
@@ -104,6 +116,7 @@
 
             if (popularity) {
                 this.hasPopularity = popularity.reduce((pv, cv) => pv + cv) > 0
+                this.statsData = popularity.filter(value => value > 0)
             }
 
             if (this.place.opening_hours) {
@@ -122,3 +135,12 @@
         }
     }
 </script>
+
+<style>
+    .slide-up-enter-active, .slide-up-leave-active {
+        transition: all 1.5s;
+    }
+    .slide-up-enter, .slide-up-leave {
+        transform: translateY(-200px);
+    }
+</style>
