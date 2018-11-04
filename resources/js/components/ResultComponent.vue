@@ -61,7 +61,7 @@
             search() {
                 this.places = []
 
-                axios.get('/api/places/', { params: this.query })
+                axios.get('https://pure-reef-43936.herokuapp.com/api/places/', { params: this.query })
                     .then(res => {
                         this.places = res.data
                     })
