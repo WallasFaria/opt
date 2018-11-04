@@ -1,7 +1,7 @@
 <template>
     <div class="place-card">
         <div class="place-container">
-            <div class="place-image" style="background-image: url('images/placeholder.jpg')"></div>
+            <div class="place-image" :style="`background-image: url('${place.img_url}')`"></div>
             <div class="place-text">
                 <div class="place-data">
                     <div class="place-mid">

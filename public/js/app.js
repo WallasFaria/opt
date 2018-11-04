@@ -83612,7 +83612,7 @@ var render = function() {
       _c("div", { staticClass: "place-container" }, [
         _c("div", {
           staticClass: "place-image",
-          staticStyle: { "background-image": "url('images/placeholder.jpg')" }
+          style: "background-image: url('" + _vm.place.img_url + "')"
         }),
         _vm._v(" "),
         _c("div", { staticClass: "place-text" }, [
