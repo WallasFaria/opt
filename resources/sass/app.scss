@@ -180,6 +180,13 @@
     &-left {
       flex: 1;
       text-align: left;
+      content: " ";
+      background-image: url("../svg/left-arrow.svg");
+      background-position: center left;
+      background-repeat: no-repeat;
+      width: 24px;
+      height: 24px;
+      font-weight: normal;
     }
     &-center {
       text-align: center;
@@ -187,6 +194,13 @@
     &-right {
       flex: 1;
       text-align: right;
+      content: " ";
+      background-image: url("../svg/right-arrow.svg");
+      background-position: center right;
+      background-repeat: no-repeat;
+      width: 24px;
+      height: 24px;
+      font-weight: normal;
     }
   }
 }

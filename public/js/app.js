@@ -82811,17 +82811,13 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "stats-overlay-navigation" }, [
-        _c("div", { staticClass: "stats-overlay-navigation-left" }, [
-          _vm._v(" < ")
-        ]),
+        _c("div", { staticClass: "stats-overlay-navigation-left" }),
         _vm._v(" "),
         _c("div", { staticClass: "stats-overlay-navigation-center" }, [
           _vm._v("Domingo")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "stats-overlay-navigation-right" }, [
-          _vm._v(" > ")
-        ])
+        _c("div", { staticClass: "stats-overlay-navigation-right" })
       ])
     ])
   }

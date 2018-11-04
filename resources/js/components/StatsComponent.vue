@@ -3,9 +3,9 @@
         <div class="stats-overlay">
             <div class="stats-overlay-top">Gráfico de Movimentação</div>
             <div class="stats-overlay-navigation">
-                <div class="stats-overlay-navigation-left"> < </div>
+                <div class="stats-overlay-navigation-left"></div>
                 <div class="stats-overlay-navigation-center">Domingo</div>
-                <div class="stats-overlay-navigation-right"> > </div>
+                <div class="stats-overlay-navigation-right"></div>
             </div>
         </div>
         <div class="stats-placeholder"></div>

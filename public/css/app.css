@@ -10738,6 +10738,13 @@ a.text-dark:focus {
       -ms-flex: 1;
           flex: 1;
   text-align: left;
+  content: " ";
+  background-image: url(/images/left-arrow.svg?5434740cfd131adef8acbdf8fb43ba3a);
+  background-position: center left;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  font-weight: normal;
 }
 
 .stats-overlay-navigation-center {
@@ -10749,6 +10756,13 @@ a.text-dark:focus {
       -ms-flex: 1;
           flex: 1;
   text-align: right;
+  content: " ";
+  background-image: url(/images/right-arrow.svg?11ea5efbd1c9e8f273869a6d8487a079);
+  background-position: center right;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  font-weight: normal;
 }
 
 .stats-top {
