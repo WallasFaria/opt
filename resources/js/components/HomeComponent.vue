@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="logo">
-            <img src="svg/logo.svg" alt="Logo Opt">
+            <img src="svg/logo.png" alt="Logo Opt">
         </div>
 
         <div class="content">

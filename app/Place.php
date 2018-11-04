@@ -71,12 +71,11 @@ class Place {
     }
 
     public function sortByHours($results) {
+        date_default_timezone_set("America/Sao_Paulo");
         $response = array();
         $jumped = array();
-        //$day = date("w");
-        //$hour = intval(date("h"));
-        $day = 6;
-        $hour = 22;
+        $day = date("w");
+        $hour = intval(date("h"));
         $convertedDay = $this->convertDay($day);
         $lesser = array(); # INDEX, VALUE
         foreach($results as $index => $result) {

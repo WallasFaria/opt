@@ -50220,7 +50220,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "logo" }, [
-      _c("img", { attrs: { src: "svg/logo.svg", alt: "Logo Opt" } })
+      _c("img", { attrs: { src: "svg/logo.png", alt: "Logo Opt" } })
     ])
   }
 ]
@@ -50295,7 +50295,7 @@ var content = __webpack_require__(50);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(52)("b4a50b7e", content, false, {});
+var update = __webpack_require__(52)("9aafd618", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
