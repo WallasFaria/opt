@@ -50900,12 +50900,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             hasPopularity: false,
             popularity: '',
             isOpen: null,
-            showPopularity: false
+            showPopularity: false,
+            popularityNow: 0,
+            rangeOfPopularity: ''
         };
     },
 
 
-    methods: {},
+    methods: {
+        rangesOfPopularity: function rangesOfPopularity() {
+            var rangesOfPopularity = [{
+                start: 1,
+                end: 35,
+                label: 'Baixo'
+            }, {
+                start: 36,
+                end: 65,
+                label: 'Médio'
+            }, {
+                start: 66,
+                end: 100,
+                label: 'Alta'
+            }];
+
+            for (var i = 0; i < rangesOfPopularity.length; i++) {
+                if (this.popularityNow >= rangesOfPopularity[i].start && this.popularityNow <= rangesOfPopularity[i].end) {
+                    this.rangeOfPopularity = rangesOfPopularity[i].label;
+                }
+            }
+        }
+    },
 
     mounted: function mounted() {
         var days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
@@ -50931,7 +50955,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
 
         if (this.showPopularity) {
-            var rangesOfPopularity = {};
+            this.popularityNow = popularity[d.getHours()];
+            this.rangesOfPopularity();
         }
     }
 });
@@ -50986,34 +51011,32 @@ var render = function() {
                     _vm._v(_vm._s(_vm.dateFormated))
                   ]),
                   _vm._v(" "),
-                  _vm._m(0)
+                  _c(
+                    "div",
+                    { staticClass: "place-popularity place-popularity-low" },
+                    [
+                      _c("div", { staticClass: "place-popularity-text" }, [
+                        _vm._v("Movimento"),
+                        _c("br"),
+                        _vm._v(_vm._s(_vm.rangeOfPopularity))
+                      ])
+                    ]
+                  )
                 ])
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(0)
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(1)
       ])
     ]),
     _vm._v(" "),
-    _vm._m(3)
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "place-popularity place-popularity-low" }, [
-      _c("div", { staticClass: "place-popularity-text" }, [
-        _vm._v("Movimento"),
-        _c("br"),
-        _vm._v("Baixo")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

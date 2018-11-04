@@ -21,7 +21,7 @@
                         <div class="place-right" v-if="showPopularity">
                             <div class="place-time">{{ dateFormated }}</div>
                             <div class="place-popularity place-popularity-low">
-                                <div class="place-popularity-text">Movimento<br>Baixo</div>
+                                <div class="place-popularity-text">Movimento<br>{{ rangeOfPopularity }}</div>
                             </div>
                         </div>
                     </div>
@@ -58,12 +58,39 @@
                 hasPopularity: false,
                 popularity: '',
                 isOpen: null,
-                showPopularity: false
+                showPopularity: false,
+                popularityNow: 0,
+                rangeOfPopularity: ''
             }
         },
 
         methods: {
+            rangesOfPopularity() {
+                const rangesOfPopularity = [
+                    {
+                        start: 1,
+                        end: 35,
+                        label: 'Baixo',
+                    },
+                    {
+                        start: 36,
+                        end: 65,
+                        label: 'Médio',
+                    },
+                    {
+                        start: 66,
+                        end: 100,
+                        label: 'Alta',
+                    },
+                ]
 
+                for (let i=0; i < rangesOfPopularity.length; i++) {
+                    if (this.popularityNow >= rangesOfPopularity[i].start &&
+                        this.popularityNow <= rangesOfPopularity[i].end) {
+                        this.rangeOfPopularity = rangesOfPopularity[i].label
+                    }
+                }
+            }
         },
 
         mounted() {
@@ -89,7 +116,8 @@
             }
 
             if (this.showPopularity) {
-                const rangesOfPopularity = {}
+                this.popularityNow = popularity[d.getHours()]
+                this.rangesOfPopularity()
             }
         }
     }
