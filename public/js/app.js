@@ -50709,6 +50709,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 
 
@@ -50737,9 +50738,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
                         case 3:
 
-                            axios.get('/api/places/', { params: this.query }).then(function (res) {
-                                _this.places = res.data;
-                            });
+                            this.search();
 
                         case 4:
                         case "end":
@@ -50768,6 +50767,23 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             },
             showSearch: false
         };
+    },
+
+
+    methods: {
+        search: function search() {
+            var _this2 = this;
+
+            this.places = [];
+
+            axios.get('/api/places/', { params: this.query }).then(function (res) {
+                _this2.places = res.data;
+            });
+        },
+        setQueryToSearch: function setQueryToSearch(query) {
+            this.query.name = query;
+            this.search();
+        }
     }
 });
 
@@ -51055,7 +51071,8 @@ var render = function() {
         [
           _vm.showSearch
             ? _c("search-component", {
-                attrs: { value: _vm.query.name, className: "top" }
+                attrs: { value: _vm.query.name, className: "top" },
+                on: { onKeyPress: _vm.setQueryToSearch }
               })
             : _vm._e()
         ],

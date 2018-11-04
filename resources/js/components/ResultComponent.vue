@@ -4,7 +4,8 @@
             <search-component
                 v-if="showSearch"
                 :value="query.name"
-                :className="'top'" />
+                :className="'top'"
+                @onKeyPress="setQueryToSearch" />
         </transition>
 
         <div class="main">
@@ -38,10 +39,7 @@
                     this.query.lon = coords.lng
                 })
 
-            axios.get('/api/places/', { params: this.query })
-                .then(res => {
-                    this.places = res.data
-                })
+            this.search()
         },
 
         data() {
@@ -59,6 +57,20 @@
             }
         },
 
+        methods: {
+            search() {
+                this.places = []
+
+                axios.get('/api/places/', { params: this.query })
+                    .then(res => {
+                        this.places = res.data
+                    })
+            },
+            setQueryToSearch(query) {
+                this.query.name = query
+                this.search()
+            }
+        }
     }
 </script>
 
