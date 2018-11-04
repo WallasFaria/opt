@@ -29,12 +29,19 @@
             'card-component': CardComponent,
         },
 
-        mounted() {
+        async mounted() {
             this.showSearch = true;
-            // axios.get('/api/places/', this.query)
-            //     .then(result => {
-            //         console.log(result)
-            //     })
+
+            await this.$getLocation({ enableHighAccuracy: true })
+                .then(coords => {
+                    this.query.lat = coords.lat
+                    this.query.lon = coords.lng
+                })
+
+            axios.get('/api/places/', { params: this.query })
+                .then(result => {
+                    this.places = result
+                })
         },
 
         data() {
