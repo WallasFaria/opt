@@ -15,7 +15,6 @@
                                     <strong>Situação:</strong>
                                     {{ isOpen ? 'Aberto' : 'Fechado' }} Agora
                                 </div>
-                                <!-- <div class="place-contact"><strong>Telefone:</strong> (22) 2737-4300</div> -->
                             </div>
                         </div>
                         <div class="place-right" v-if="showPopularity">
@@ -38,7 +37,9 @@
             <div class="place-timeline" v-if="visibledStats">
                 <stats-component
                     :statsData="statsData"
-                    :statsLabels="statsLabels" />
+                    :statsLabels="statsLabels"
+                    :lastResults="lastResults"
+                    :day="day" />
             </div>
         </transition>
     </div>
@@ -62,6 +63,8 @@
                 rangeOfPopularity: '',
                 popularityClassName: '',
                 visibledStats: false,
+                lastResults: {},
+                day: null,
 
                 statsData: [],
                 statsLabels: [],
@@ -101,6 +104,7 @@
             },
             showStats() {
                 this.visibledStats = !this.visibledStats
+
             }
         },
 
@@ -113,9 +117,17 @@
             const day = d.getDay() > 0 ? d.getDay() : 7
             const popularity = this.place.days[day].values;
 
+            this.lastResults = this.place;
+            this.day = Number(day);
+
             if (popularity) {
                 this.hasPopularity = popularity.reduce((pv, cv) => pv + cv) > 0
-                this.statsData = popularity.filter(value => value > 0)
+                for(let i=0;i<popularity.length;i++) {
+                    if (popularity[i] != 0) {
+                        this.statsData.push(popularity[i]);
+                        this.statsLabels.push(i);
+                    }
+                }
             }
 
             if (this.place.opening_hours) {
