@@ -120,6 +120,22 @@ class Place {
         return $response;
     }
 
+    public function getPhoto($reference) {
+        $results = $this->curl->get("https://maps.googleapis.com/maps/api/place/photo", array(
+            "key" => $this->apiKey,
+            "photoreference" => $reference,
+            "maxwidth" => 400
+        ));
+        
+        $image = "";
+        if ($results->http_status_code != 404) {
+            if (preg_match('%Location: (.*)\n%', implode("\n", $results->response_headers), $match)) {
+                $image = trim($match[1]);
+            }
+        }
+        return $image;
+    }
+
     public function parseResults($results, $sortBy) {
 
         $index = 0;
@@ -144,6 +160,14 @@ class Place {
             if (count($placeIdentifier) == 0) {
                 continue;
             }
+
+            $result["img_url"] = "";
+            if (isset($result["photos"][0]["photo_reference"])) {
+                $Photo = $this->getPhoto($result["photos"][0]["photo_reference"]);
+                if ($Photo != "") {
+                    $result["img_url"] = $Photo;
+                }
+            }          
 
             $placeIdentifierStr = implode(", ", $placeIdentifier);
             
