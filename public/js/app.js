@@ -71620,6 +71620,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             var _this2 = this;
 
             this.places = [];
+            this.showLoad = true;
 
             axios.get('/api/places/', { params: this.query }).then(function (res) {
                 _this2.places = res.data;

@@ -63,7 +63,8 @@
         methods: {
             search() {
                 this.places = []
-
+                this.showLoad = true;
+                
                 axios.get('/api/places/', { params: this.query })
                     .then(res => {
                         this.places = res.data;
