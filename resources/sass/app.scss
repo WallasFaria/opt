@@ -8,6 +8,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'search';
+
 .main {
   padding: 10px;
   display: flex;
@@ -25,33 +27,4 @@
 
 .content {
   flex: 1;
-}
-
-.search {
-  background: #ffffff;
-  border: 1px solid #BCE0FD;
-  color: #2699FB;
-  padding: 10px;
-  font-size: 18px;
-  width: 100%;
-  &::before {
-    position: absolute;
-    content: " ";
-    background-image: url('../svg/search.svg');
-    background-size: cover;
-    width: 32px;
-    height: 32px;
-  }
-  input {
-    border: 0px;
-    width: 100%;
-    background: transparent;
-    padding-left: 45px;
-    color: #2699FB;
-    font-size: 18px;
-    padding-top: 2px;
-    &:focus {
-      outline: none;
-    }
-  }
 }

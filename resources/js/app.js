@@ -6,9 +6,18 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import HomeComponent from './components/HomeComponent'
+import ResultComponent from './components/ResultComponent'
 
 const routes = [
     { path: '/', component: HomeComponent },
+    {
+        path: '/search',
+        component: ResultComponent,
+        props: (route) => ({
+            query: route.query.q,
+            radius: route.query.radius,
+        })
+    }
 ]
 
 const router = new VueRouter({
