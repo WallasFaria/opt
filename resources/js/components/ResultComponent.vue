@@ -15,6 +15,7 @@
                         :key="index"
                         :place="place" />
                 </div>
+                <div id="loading" v-if="showLoad"><img class="rotate" src="images/icon-logo.png" alt="Opt" /></div>
             </div>
         </div>
     </div>
@@ -31,7 +32,8 @@
         },
 
         async mounted() {
-            this.showSearch = true;
+            this.showSearch = true
+            this.showLoad = true
 
             await this.$getLocation({ enableHighAccuracy: true })
                 .then(coords => {
@@ -53,7 +55,8 @@
                     lon: 0,
                     sortBy: 'popularity'
                 },
-                showSearch: false
+                showSearch: false,
+                showLoad: false,
             }
         },
 
@@ -63,7 +66,8 @@
 
                 axios.get('/api/places/', { params: this.query })
                     .then(res => {
-                        this.places = res.data
+                        this.places = res.data;
+                        this.showLoad = false;
                     })
             },
             setQueryToSearch(query) {

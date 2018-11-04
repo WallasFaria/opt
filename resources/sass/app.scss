@@ -223,3 +223,21 @@
   height: 26px;
   padding: 4px;
 }
+
+#loading {
+  width: 95%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.rotate{
+  animation: loading 1s linear infinite;
+  @keyframes loading {
+   0% { 
+     transform: rotate(0); 
+   }
+   100% { 
+     transform: rotate(360deg);
+   }
+  }
+ }

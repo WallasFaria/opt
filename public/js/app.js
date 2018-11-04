@@ -71552,6 +71552,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 
 
@@ -71571,18 +71572,19 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                     switch (_context.prev = _context.next) {
                         case 0:
                             this.showSearch = true;
+                            this.showLoad = true;
 
-                            _context.next = 3;
+                            _context.next = 4;
                             return this.$getLocation({ enableHighAccuracy: true }).then(function (coords) {
                                 _this.query.lat = coords.lat;
                                 _this.query.lon = coords.lng;
                             });
 
-                        case 3:
+                        case 4:
 
                             this.search();
 
-                        case 4:
+                        case 5:
                         case "end":
                             return _context.stop();
                     }
@@ -71607,7 +71609,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                 lon: 0,
                 sortBy: 'popularity'
             },
-            showSearch: false
+            showSearch: false,
+            showLoad: false
         };
     },
 
@@ -71620,6 +71623,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
             axios.get('/api/places/', { params: this.query }).then(function (res) {
                 _this2.places = res.data;
+                _this2.showLoad = false;
             });
         },
         setQueryToSearch: function setQueryToSearch(query) {
@@ -83892,7 +83896,16 @@ var render = function() {
                 attrs: { place: place }
               })
             })
-          )
+          ),
+          _vm._v(" "),
+          _vm.showLoad
+            ? _c("div", { attrs: { id: "loading" } }, [
+                _c("img", {
+                  staticClass: "rotate",
+                  attrs: { src: "images/icon-logo.png", alt: "Opt" }
+                })
+              ])
+            : _vm._e()
         ])
       ])
     ],
