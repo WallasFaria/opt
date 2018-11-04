@@ -5,19 +5,30 @@
         </div>
 
         <div class="content">
-            <search-component />
+            <transition name='slide-up'>
+                <search-component
+                    :nameClass="'transition'"
+                    @onKeyPress="search"/>
+            </transition>
         </div>
     </div>
 </template>
 
 <script>
     import SearchComponent from "./SearchComponent.vue";
+
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
         components: {
             'search-component': SearchComponent
+        },
+
+        methods: {
+            search(query) {
+                this.$router.push({
+                    path: '/search',
+                    query: { q: query, radius: 2000 }
+                })
+            }
         }
     }
 </script>
