@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('https://pure-reef-43936.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
