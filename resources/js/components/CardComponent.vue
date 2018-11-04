@@ -23,29 +23,29 @@
                     </div>
                 </div>
                 <div class="best-hour">
-                    <div class="hour-circle">
-
-                    </div>
-                    <div class="place-status"></div>
+                    
                 </div>
             </div>
         </div>
         <div class="place-timeline">
-            <div class="place-timeline--scroller">
-                <span class="place-timeline--text"></span>
-            </div>
-            <div class="place-timeline--chart">
-
-            </div>
+            <stats-component />
         </div>
     </div>
 </template>
 
-
 <script>
+    import StatsComponent from "./StatsComponent.vue"
     export default {
+        components: {
+            "stats-component": StatsComponent
+        },
         props: ['place'],
         methods: {
+        },
+        data() {
+            return {
+                data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+            }
         }
     }
 </script>
