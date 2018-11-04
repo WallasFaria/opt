@@ -72515,7 +72515,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -83606,109 +83605,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "place-card" }, [
-    _c("div", { staticClass: "place-container" }, [
-      _c("div", {
-        staticClass: "place-image",
-        staticStyle: { "background-image": "url('images/placeholder.jpg')" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "place-text" }, [
-        _c("div", { staticClass: "place-data" }, [
-          _c("div", { staticClass: "place-mid" }, [
-            _c("div", { staticClass: "place-left" }, [
-              _c("div", { staticClass: "place-name" }, [
-                _vm._v(_vm._s(_vm.place.name))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "place-info" }, [
-                _c("div", { staticClass: "place-addr" }, [
-                  _c("strong", [_vm._v("Endereço:")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.place.final_address) +
-                      "\n                            "
-                  )
+  return _c(
+    "div",
+    { staticClass: "place-card" },
+    [
+      _c("div", { staticClass: "place-container" }, [
+        _c("div", {
+          staticClass: "place-image",
+          staticStyle: { "background-image": "url('images/placeholder.jpg')" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "place-text" }, [
+          _c("div", { staticClass: "place-data" }, [
+            _c("div", { staticClass: "place-mid" }, [
+              _c("div", { staticClass: "place-left" }, [
+                _c("div", { staticClass: "place-name" }, [
+                  _vm._v(_vm._s(_vm.place.name))
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "place-open" }, [
-                  _c("strong", [_vm._v("Situação:")]),
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.isOpen ? "Aberto" : "Fechado") +
-                      " Agora\n                            "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.showPopularity
-              ? _c("div", { staticClass: "place-right" }, [
-                  _c("div", { staticClass: "place-time" }, [
-                    _vm._v(_vm._s(_vm.dateFormated))
+                _c("div", { staticClass: "place-info" }, [
+                  _c("div", { staticClass: "place-addr" }, [
+                    _c("strong", [_vm._v("Endereço:")]),
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.place.final_address) +
+                        "\n                            "
+                    )
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "place-popularity",
-                      class: _vm.popularityClassName
-                    },
-                    [
-                      _c("div", { staticClass: "place-popularity-text" }, [
-                        _vm._v("Movimento"),
-                        _c("br"),
-                        _vm._v(_vm._s(_vm.rangeOfPopularity))
-                      ])
-                    ]
-                  )
+                  _c("div", { staticClass: "place-open" }, [
+                    _c("strong", [_vm._v("Situação:")]),
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.isOpen ? "Aberto" : "Fechado") +
+                        " Agora\n                            "
+                    )
+                  ])
                 ])
-              : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm.showPopularity
+                ? _c("div", { staticClass: "place-right" }, [
+                    _c("div", { staticClass: "place-time" }, [
+                      _vm._v(_vm._s(_vm.dateFormated))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "place-popularity",
+                        class: _vm.popularityClassName
+                      },
+                      [
+                        _c("div", { staticClass: "place-popularity-text" }, [
+                          _vm._v("Movimento"),
+                          _c("br"),
+                          _vm._v(_vm._s(_vm.rangeOfPopularity))
+                        ])
+                      ]
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "place-bottom" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "place-details",
+                  on: {
+                    click: function($event) {
+                      _vm.showStats()
+                    }
+                  }
+                },
+                [_vm._v("DETALHES")]
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "place-bottom" }, [
-            _c(
+          _c("div", { staticClass: "best-hour" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "slide-up" } }, [
+        _vm.visibledStats
+          ? _c(
               "div",
-              {
-                staticClass: "place-details",
-                on: {
-                  click: function($event) {
-                    _vm.showStats()
-                  }
-                }
-              },
-              [_vm._v("DETALHES")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "best-hour" })
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "place-timeline" },
-      [
-        _c(
-          "transition",
-          { attrs: { name: "slide-up" } },
-          [
-            _vm.visibledStats
-              ? _c("stats-component", {
+              { staticClass: "place-timeline" },
+              [
+                _c("stats-component", {
                   attrs: {
                     statsData: _vm.statsData,
                     statsLabels: _vm.statsLabels
                   }
                 })
-              : _vm._e()
-          ],
-          1
-        )
-      ],
-      1
-    )
-  ])
+              ],
+              1
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -83824,7 +83823,7 @@ exports = module.exports = __webpack_require__(192)(false);
 
 
 // module
-exports.push([module.i, "\n.slide-up-enter-active, .slide-up-leave-active {\n    -webkit-transition: all 1.5s;\n    transition: all 1.5s;\n}\n.slide-up-enter, .slide-up-leave {\n    -webkit-transform: translateY(-200px);\n            transform: translateY(-200px);\n}\n", ""]);
+exports.push([module.i, "\n.slide-up-enter-active, .slide-up-leave-active {\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.slide-up-enter, .slide-up-leave-top {\n    -webkit-transform: translateY(-100px);\n            transform: translateY(-100px);\n}\n", ""]);
 
 // exports
 

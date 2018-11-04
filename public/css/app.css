@@ -10568,8 +10568,6 @@ a.text-dark:focus {
   margin: 0px;
   border: 0px;
   margin-bottom: 10px;
-  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .place-container {
@@ -10578,6 +10576,7 @@ a.text-dark:focus {
   height: 200px;
   background-color: #000000;
   background-size: cover;
+  z-index: 2;
 }
 
 .place-image {

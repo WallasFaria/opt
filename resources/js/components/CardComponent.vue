@@ -34,14 +34,13 @@
                 </div>
             </div>
         </div>
-        <div class="place-timeline">
-            <transition name="slide-up">
+        <transition name="slide-up">
+            <div class="place-timeline" v-if="visibledStats">
                 <stats-component
-                    v-if="visibledStats"
                     :statsData="statsData"
                     :statsLabels="statsLabels" />
-            </transition>
-        </div>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -138,9 +137,9 @@
 
 <style>
     .slide-up-enter-active, .slide-up-leave-active {
-        transition: all 1.5s;
+        transition: all 0.3s;
     }
-    .slide-up-enter, .slide-up-leave {
-        transform: translateY(-200px);
+    .slide-up-enter, .slide-up-leave-top {
+        transform: translateY(-100px);
     }
 </style>
