@@ -50882,7 +50882,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             dateFormated: '',
             hasPopularity: false,
-            popularity: ''
+            popularity: '',
+            isOpen: null,
+            showPopularity: false
         };
     },
 
@@ -50892,16 +50894,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
         var d = new Date();
-        var hour = d.getUTCHours() > 9 ? d.getUTCHours() : '0' + d.getUTCHours();
+        var hour = d.getHours() > 9 ? d.getHours() : '0' + d.getHours();
         this.dateFormated = '' + days[d.getDay()] + ' ' + hour + 'h';
 
         var day = d.getDay() > 0 ? d.getDay() : 7;
         var popularity = this.place.days[day].values;
-        this.hasPopularity = popularity.reduce(function (pv, cv) {
-            return pv + cv;
-        }) > 0;
 
-        if (this.hasPopularity) {
+        if (popularity) {
+            this.hasPopularity = popularity.reduce(function (pv, cv) {
+                return pv + cv;
+            }) > 0;
+        }
+
+        if (this.place.opening_hours) {
+            this.isOpen = this.place.opening_hours.open_now;
+        }
+
+        if (this.hasPopularity && this.isOpen || this.hasPopularity && this.isOpen === null) {
+            this.showPopularity = true;
+        }
+
+        if (this.showPopularity) {
             var rangesOfPopularity = {};
         }
     }
@@ -50944,38 +50957,32 @@ var render = function() {
                   _c("strong", [_vm._v("Situação:")]),
                   _vm._v(
                     "\n                                " +
-                      _vm._s(
-                        _vm.place.opening_hours.open_now ? "Aberto" : "Fechado"
-                      ) +
+                      _vm._s(_vm.isOpen ? "Aberto" : "Fechado") +
                       " Agora\n                            "
                   )
                 ])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "place-right" }, [
-              _c("div", { staticClass: "place-time" }, [
-                _vm._v(_vm._s(_vm.dateFormated))
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
-            ])
+            _vm.showPopularity
+              ? _c("div", { staticClass: "place-right" }, [
+                  _c("div", { staticClass: "place-time" }, [
+                    _vm._v(_vm._s(_vm.dateFormated))
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _vm._m(1)
         ]),
         _vm._v(" "),
-        _vm.hasPopularity
-          ? _c("div", { staticClass: "best-hour" }, [
-              _c("div", { staticClass: "hour-circle" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "place-status" })
-            ])
-          : _vm._e()
+        _vm._m(2)
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -50997,6 +51004,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "place-bottom" }, [
       _c("div", { staticClass: "place-details" }, [_vm._v("DETALHES")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "best-hour" }, [
+      _c("div", { staticClass: "hour-circle" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "place-status" })
     ])
   },
   function() {
