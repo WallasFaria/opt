@@ -10599,12 +10599,6 @@ a.text-dark:focus {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 75%);
 }
 
-.place-mid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .place-left {
   -webkit-box-flex: 1;
       -ms-flex: 1 65%;
@@ -10649,6 +10643,7 @@ a.text-dark:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 134px;
 }
 
 .place-popularity {
@@ -10670,10 +10665,6 @@ a.text-dark:focus {
 .place-popularity-high {
   background-image: url(/images/high.png?1857f4a363ba420f56a2cac529e20a35);
   color: #ff6161;
-}
-
-.place-data {
-  height: 165px;
 }
 
 .place-popularity-text {
@@ -10724,7 +10715,9 @@ a.text-dark:focus {
   text-align: center;
   color: #484848;
   font-weight: bold;
-  padding-top: 25px;
+  padding-top: 15px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), color-stop(8%, rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 8%);
 }
 
 .stats-overlay-navigation {
@@ -10776,6 +10769,11 @@ a.text-dark:focus {
   background: #f0f0f0;
 }
 
+.place-timeline {
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
 .place-details {
   border: 1px solid #ffffff;
   font-weight: 300;
@@ -10783,5 +10781,6 @@ a.text-dark:focus {
   letter-spacing: 1px;
   text-align: center;
   height: 26px;
+  padding: 4px;
 }
 
