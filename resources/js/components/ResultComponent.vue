@@ -15,7 +15,7 @@
                         :key="index"
                         :place="place" />
                 </div>
-                <div id="loading" v-if="showLoad"><img class="rotate" src="images/icon-logo.png" alt="Opt" /></div>
+                <div id="loading" v-if="showLoad"><img class="img-rotate rotate" src="images/icon-logo.png" alt="Opt" /></div>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
             search() {
                 this.places = []
                 this.showLoad = true;
-                
+
                 axios.get('/api/places/', { params: this.query })
                     .then(res => {
                         this.places = res.data;

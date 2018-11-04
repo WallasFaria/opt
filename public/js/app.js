@@ -83902,7 +83902,7 @@ var render = function() {
           _vm.showLoad
             ? _c("div", { attrs: { id: "loading" } }, [
                 _c("img", {
-                  staticClass: "rotate",
+                  staticClass: "img-rotate rotate",
                   attrs: { src: "images/icon-logo.png", alt: "Opt" }
                 })
               ])
