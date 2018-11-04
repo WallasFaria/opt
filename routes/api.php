@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/google-times','SearchController@index');
+
+Route::resource('places', 'PlaceController')->only(['index', 'show']);
+

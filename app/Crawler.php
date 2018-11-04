@@ -24,8 +24,8 @@ class Crawler {
     * GERA O IDENTIFICADOR DE LOCAL COM BASE NO NOME E ENDEREÇO
     */
 
-    function __construct($Name, $Addr) {
-        $this->PlaceIdentifier = $Name.", ".$Addr;
+    function __construct($Identifier) {
+        $this->PlaceIdentifier = $Identifier;
     }
 
     /*
@@ -103,7 +103,7 @@ class Crawler {
         for($i=1;$i<$ArgCount;$i++) {
             $Index = $Args[$i];
             if (!isset($Array[$Index])) {
-                echo "INDEX $Index not found!";
+                //echo "INDEX $Index not found!";
                 return false;
             }
             $Array = $Array[$Index];
@@ -115,7 +115,7 @@ class Crawler {
     * EXTRAI INFORMAÇÕES PRINCIPAIS DO OBJETO JSON
     */
 
-    function ExtractInformations() {        
+    function ExtractInformation() {        
         return $this->ExtractIndex($this->JSON, 0, 1, 0, 14);
     }
 
@@ -132,12 +132,28 @@ class Crawler {
         $this->StorePopularHours($PopularTimes);
     }
 
+    function noHours() {
+        $Days = array();
+        /*foreach ($this->Days as $Day => $Array) {
+            $Days[$Day] = $Array;
+            $Hours = array();
+            for($i=0;$i<24;$i++) {
+                $Hours[$i] = 0;
+            }
+            $Days[$Day]["values"] = $Hours;
+        }*/
+        return $Days;
+    }    
+
     /*
     * SALVA MOVIMENTAÇÃO DO ENDEREÇO NO OBJETO
     */
 
     function StorePopularHours($Data) {
         $PopularHours = array();
+        if (!is_array($Data) or count($Data) == 0) {
+            return $this->noHours();
+        }
         foreach ($Data as $DayData) {
             $DayNumber = $DayData[0];
             # GERA ARRAY DE HORAS
@@ -156,8 +172,7 @@ class Crawler {
             # SALVA NO ARRAY
             $this->Days[$DayNumber]["values"] = $DayHours;
         }
-        # SALVA RESULTADO NO OBJETO
-        $this->PopularHours = $PopularHours;
+        return $this->Days;
     }
 
 }
