@@ -10790,6 +10790,10 @@ a.text-dark:focus {
   text-align: center;
 }
 
+#loading img {
+  height: 64px;
+}
+
 .rotate {
   -webkit-animation: loading 1s linear infinite;
           animation: loading 1s linear infinite;

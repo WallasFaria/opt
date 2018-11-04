@@ -230,6 +230,10 @@
   text-align: center;
 }
 
+#loading img {
+  height: 64px;
+}
+
 .rotate{
   animation: loading 1s linear infinite;
   @keyframes loading {
