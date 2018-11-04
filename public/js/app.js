@@ -72415,6 +72415,10 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(265)
+}
 var normalizeComponent = __webpack_require__(7)
 /* script */
 var __vue_script__ = __webpack_require__(200)
@@ -72423,7 +72427,7 @@ var __vue_template__ = __webpack_require__(252)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -72507,6 +72511,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -72523,7 +72532,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showPopularity: false,
             popularityNow: 0,
             rangeOfPopularity: '',
-            popularityClassName: ''
+            popularityClassName: '',
+            visibledStats: false,
+
+            statsData: [],
+            statsLabels: []
         };
     },
 
@@ -72553,6 +72566,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.popularityClassName = rangesOfPopularity[i].className;
                 }
             }
+        },
+        showStats: function showStats() {
+            this.visibledStats = !this.visibledStats;
         }
     },
 
@@ -72569,6 +72585,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.hasPopularity = popularity.reduce(function (pv, cv) {
                 return pv + cv;
             }) > 0;
+            this.statsData = popularity.filter(function (value) {
+                return value > 0;
+            });
         }
 
         if (this.place.opening_hours) {
@@ -72727,6 +72746,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['labels', 'statsData'],
     extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
     mounted: function mounted() {
         this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
@@ -72737,11 +72757,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // Overwriting base render method with actual data.
         this.renderChart({
-            labels: ['09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
+            labels: this.labels,
             datasets: [{
                 label: '',
                 backgroundColor: this.gradient,
-                data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 10, 2, 5, 4]
+                data: this.statsData
             }]
         }, {
             responsive: true,
@@ -83646,26 +83666,51 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "place-bottom" }, [
+            _c(
+              "div",
+              {
+                staticClass: "place-details",
+                on: {
+                  click: function($event) {
+                    _vm.showStats()
+                  }
+                }
+              },
+              [_vm._v("DETALHES")]
+            )
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "best-hour" })
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "place-timeline" }, [_c("stats-component")], 1)
+    _c(
+      "div",
+      { staticClass: "place-timeline" },
+      [
+        _c(
+          "transition",
+          { attrs: { name: "slide-up" } },
+          [
+            _vm.visibledStats
+              ? _c("stats-component", {
+                  attrs: {
+                    statsData: _vm.statsData,
+                    statsLabels: _vm.statsLabels
+                  }
+                })
+              : _vm._e()
+          ],
+          1
+        )
+      ],
+      1
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "place-bottom" }, [
-      _c("div", { staticClass: "place-details" }, [_vm._v("DETALHES")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -83733,6 +83778,56 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(266);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(193)("137e5502", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e4da0f2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CardComponent.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e4da0f2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CardComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 266 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(192)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slide-up-enter-active, .slide-up-leave-active {\n    -webkit-transition: all 1.5s;\n    transition: all 1.5s;\n}\n.slide-up-enter, .slide-up-leave {\n    -webkit-transform: translateY(-200px);\n            transform: translateY(-200px);\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
