@@ -39,8 +39,8 @@
                 })
 
             axios.get('/api/places/', { params: this.query })
-                .then(result => {
-                    this.places = result
+                .then(res => {
+                    this.places = res.data
                 })
         },
 

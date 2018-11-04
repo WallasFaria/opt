@@ -50737,8 +50737,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
                         case 3:
 
-                            axios.get('/api/places/', { params: this.query }).then(function (result) {
-                                _this.places = result;
+                            axios.get('/api/places/', { params: this.query }).then(function (res) {
+                                _this.places = res.data;
                             });
 
                         case 4:
@@ -50757,12 +50757,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     }(),
     data: function data() {
         return {
-            places: [{
-                name: "Banco do Brasil",
-                final_address: "R. Eng. Franco Amaral, 13 - Parque Flamboyant, Campos dos Goytacazes - RJ, 28015-270",
-                open_now: false,
-                contact: "(22) 2724-5111"
-            }],
+            places: [],
             sortOption: ['distance', 'popularity'],
             query: {
                 name: this.$route.query.q,
@@ -50873,10 +50868,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['place'],
-    methods: {}
+    data: function data() {
+        return {
+            dateFormated: '',
+            hasPopularity: false,
+            popularity: ''
+        };
+    },
+
+
+    methods: {},
+
+    mounted: function mounted() {
+        var days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+        var d = new Date();
+        var hour = d.getUTCHours() > 9 ? d.getUTCHours() : '0' + d.getUTCHours();
+        this.dateFormated = '' + days[d.getDay()] + ' ' + hour + 'h';
+
+        var day = d.getDay() > 0 ? d.getDay() : 7;
+        var popularity = this.place.days[day].values;
+        this.hasPopularity = popularity.reduce(function (pv, cv) {
+            return pv + cv;
+        }) > 0;
+
+        if (this.hasPopularity) {
+            var rangesOfPopularity = {};
+        }
+    }
 });
 
 /***/ }),
@@ -50902,20 +50930,52 @@ var render = function() {
                 _vm._v(_vm._s(_vm.place.name))
               ]),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "place-info" }, [
+                _c("div", { staticClass: "place-addr" }, [
+                  _c("strong", [_vm._v("Endereço:")]),
+                  _vm._v(
+                    " " +
+                      _vm._s(_vm.place.final_address) +
+                      "\n                            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "place-open" }, [
+                  _c("strong", [_vm._v("Situação:")]),
+                  _vm._v(
+                    "\n                                " +
+                      _vm._s(
+                        _vm.place.opening_hours.open_now ? "Aberto" : "Fechado"
+                      ) +
+                      " Agora\n                            "
+                  )
+                ])
+              ])
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "place-right" }, [
+              _c("div", { staticClass: "place-time" }, [
+                _vm._v(_vm._s(_vm.dateFormated))
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(1)
         ]),
         _vm._v(" "),
-        _vm._m(3)
+        _vm.hasPopularity
+          ? _c("div", { staticClass: "best-hour" }, [
+              _c("div", { staticClass: "hour-circle" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "place-status" })
+            ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -50923,38 +50983,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "place-info" }, [
-      _c("div", { staticClass: "place-addr" }, [
-        _c("strong", [_vm._v("Endereço:")]),
-        _vm._v(
-          " R. Manoel Teodoro, 28 - Centro, Campos dos Goytacazes - RJ, 28030-490"
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "place-open" }, [
-        _c("strong", [_vm._v("Situação:")]),
-        _vm._v(" Aberto agora")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "place-contact" }, [
-        _c("strong", [_vm._v("Telefone:")]),
-        _vm._v(" (22) 2737-4300")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "place-right" }, [
-      _c("div", { staticClass: "place-time" }, [_vm._v("Seg 09h")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "place-popularity place-popularity-low" }, [
-        _c("div", { staticClass: "place-popularity-text" }, [
-          _vm._v("Movimento"),
-          _c("br"),
-          _vm._v("Baixo")
-        ])
+    return _c("div", { staticClass: "place-popularity place-popularity-low" }, [
+      _c("div", { staticClass: "place-popularity-text" }, [
+        _vm._v("Movimento"),
+        _c("br"),
+        _vm._v("Baixo")
       ])
     ])
   },
@@ -50964,16 +50997,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "place-bottom" }, [
       _c("div", { staticClass: "place-details" }, [_vm._v("DETALHES")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "best-hour" }, [
-      _c("div", { staticClass: "hour-circle" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "place-status" })
     ])
   },
   function() {
